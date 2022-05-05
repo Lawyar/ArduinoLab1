@@ -22,7 +22,7 @@ namespace
   MB_String default_author_email = "labalabesp8266@gmail.com";
   MB_String default_email_password = "xsea vhee vszt dwbd";
   uint16_t default_port = 465;
-  MB_String default_recipient_email = "tychinin554@gmail.com";
+  MB_String default_recipient_email = "IDONTKNOWYOUREMAIL@gmail.com";
   MB_String default_message = "<div style=\"color:#2f4468;\"><h1>IoT will be on the next Saturday</h1><p>- sent from esp8266</p></div>";
 }
 
@@ -84,7 +84,7 @@ bool command_handler(const String& command)
       ssid = default_ssid;
       password = default_wifi_password;
     }
-    Serial.print("Connecting to " + ssid + " with password " + password);
+    Serial.print("Connecting to " + ssid + " with password " + password + " ");
     WiFi.begin(ssid.c_str(), password.c_str());
 
     while (WiFi.status() != WL_CONNECTED) 
@@ -188,7 +188,7 @@ void smtpCallback(SMTP_Status status)
       time_t ts = (time_t)result.timestamp;
       localtime_r(&ts, &dt);
 
-      ESP_MAIL_PRINTF("No Message: %d\n", i + 1);
+      ESP_MAIL_PRINTF("Message Number: %d\n", i + 1);
       ESP_MAIL_PRINTF("Status: %s\n", result.completed ? "success" : "failed");
       ESP_MAIL_PRINTF("Date and Time: %d/%d/%d %d:%d:%d\n", dt.tm_year + 1900, dt.tm_mon + 1, dt.tm_mday, dt.tm_hour, dt.tm_min, dt.tm_sec);
       ESP_MAIL_PRINTF("Recipient: %s\n", result.recipients);
